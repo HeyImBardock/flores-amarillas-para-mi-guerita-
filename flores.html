@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Para mi amorcito 💛</title>
+    <style>
+      body {
+        background: linear-gradient(135deg, #f0e68c, #fffacd);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      /* Ramo completo */
+      .bouquet-container {
+        position: relative;
+        width: 300px;
+        height: 450px;
+        margin-bottom: 30px;
+        animation: swayBouquet 6s ease-in-out infinite;
+        transform-origin: bottom center;
+      }
+
+      /* Tallos */
+      .stem {
+        position: absolute;
+        width: 7px;
+        height: 235px;
+        background: linear-gradient(to top, #006400, #228b22);
+        bottom: 0;
+        border-radius: 20px;
+        transform-origin: bottom center;
+        left: calc(50% - 2.5px);
+      }
+      .stem1 {
+        transform: rotate(-5deg);
+      }
+      .stem2 {
+        transform: rotate(5deg);
+      }
+      .stem3 {
+        transform: rotate(15deg);
+      }
+      .stem4 {
+        transform: rotate(-15deg);
+      }
+      .stem5 {
+        transform: rotate(15deg);
+      }
+
+      /* Lazo */
+      .ribbon {
+        position: absolute;
+        bottom: 8px; /* Movido un poco más
+abajo para que no interfiera con las flores */
+        width: 70px;
+        height: 40px;
+        background-color: #dc143c;
+        border-radius: 5px;
+        z-index: 5;
+        left: calc(57% - 57px); /* Centra el lazo */
+      }
+      .ribbon::before,
+      .ribbon::after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 70px;
+        background-color: #dc143c;
+        border-radius: 50px 50px 0 0;
+      }
+      .ribbon::before {
+        transform: rotate(-35deg);
+        left: -25px;
+        top: -20px;
+      }
+      .ribbon::after {
+        transform: rotate(35deg);
+        right: -25px;
+        top: -20px;
+      }
+
+      /* Flor individual */
+      .flower {
+        position: absolute;
+        bottom: 150px;
+        transform-origin: bottom center;
+      }
+
+      /* Movimiento individual de cada flor */
+      .f1 {
+        left: calc(50% - 15px);
+        bottom: 250px;
+        transform: translate(0px, -40px) scale(1);
+        animation: swayFlower1 4s ease-in-out infinite;
+      }
+      .f2 {
+        left: calc(50% - 90px);
+        bottom: 230px;
+        transform: translate(0px, -10px) scale(0.9);
+        animation: swayFlower2 4s ease-in-out infinite;
+      }
+      .f3 {
+        left: calc(50% + 60px);
+        bottom: 240px;
+        transform: translate(0px, 0px) scale(0.95);
+        animation: swayFlower3 4s ease-in-out infinite;
+      }
+      .f4 {
+        left: calc(50% - 60px);
+        bottom: 180px;
+        transform: translate(0px, 50px) scale(0.8);
+        animation: swayFlower4 4s ease-in-out infinite;
+      }
+      .f5 {
+        left: calc(50% + 35px);
+        bottom: 190px;
+        transform: translate(0px, 60px) scale(0.85);
+        animation: swayFlower5 4s ease-in-out infinite;
+      }
+      .f6 {
+        left: calc(50% + 95px);
+        bottom: 160px;
+        transform: translate(0px, 80px) scale(0.7);
+        animation: swayFlower6 4s ease-in-out infinite;
+      }
+      .f7 {
+        left: calc(50% - 110px);
+        bottom: 170px;
+        transform: translate(0px, 70px) scale(0.75);
+        animation: swayFlower7 4s ease-in-out infinite;
+      }
+
+      /* Centro y pétalos */
+      .flower .center {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: #8b4513;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+      }
+      .petal {
+        position: absolute;
+        width: 35px;
+        height: 50px;
+        background: linear-gradient(to bottom, #ffd700, #ffec8b);
+        border-radius: 50% 50% 0 0;
+        transform-origin: bottom center;
+        top: -45px;
+        left: -17.5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+      .petal1 {
+        transform: rotate(0deg);
+      }
+      .petal2 {
+        transform: rotate(45deg);
+      }
+      .petal3 {
+        transform: rotate(90deg);
+      }
+      .petal4 {
+        transform: rotate(135deg);
+      }
+      .petal5 {
+        transform: rotate(180deg);
+      }
+      .petal6 {
+        transform: rotate(225deg);
+      }
+      .petal7 {
+        transform: rotate(270deg);
+      }
+      .petal8 {
+        transform: rotate(315deg);
+      }
+
+      /* Animaciones */
+      @keyframes swayBouquet {
+        0% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(2deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+      @keyframes swayFlower1 {
+        0% {
+          transform: translate(0px, -40px) rotate(0deg);
+        }
+        50% {
+          transform: translate(0px, -40px) rotate(3deg);
+        }
+        100% {
+          transform: translate(0px, -40px) rotate(0deg);
+        }
+      }
+      @keyframes swayFlower2 {
+        0% {
+          transform: translate(0px, -10px) rotate(0deg);
+        }
+        50% {
+          transform: translate(0px, -10px) rotate(-2deg);
+        }
+        100% {
+          transform: translate(0px, -10px) rotate(0deg);
+        }
+      }
+      @keyframes swayFlower3 {
+        0% {
+          transform: translate(0px, 0px) rotate(0deg);
+        }
+        50% {
+          transform: translate(0px, 0px) rotate(2deg);
+        }
+        100% {
+          transform: translate(0px, 0px) rotate(0deg);
+        }
+      }
+      @keyframes swayFlower4 {
+        0% {
+          transform: translate(0px, 50px) rotate(0deg);
+        }
+        50% {
+          transform: translate(0px, 50px) rotate(-3deg);
+        }
+        100% {
+          transform: translate(0px, 50px) rotate(0deg);
+        }
+      }
+      @keyframes swayFlower5 {
+        0% {
+          transform: translate(0px, 60px) rotate(0deg);
+        }
+        50% {
+          transform: translate(0px, 60px) rotate(3deg);
+        }
+        100% {
+          transform: translate(0px, 60px) rotate(0deg);
+        }
+      }
+      @keyframes swayFlower6 {
+        0% {
+          transform: translate(0px, 80px) rotate(0deg);
+        }
+        50% {
+          transform: translate(0px, 80px) rotate(-2deg);
+        }
+        100% {
+          transform: translate(0px, 80px) rotate(0deg);
+        }
+      }
+      @keyframes swayFlower7 {
+        0% {
+          transform: translate(0px, 70px) rotate(0deg);
+        }
+        50% {
+          transform: translate(0px, 70px) rotate(2deg);
+        }
+        100% {
+          transform: translate(0px, 70px) rotate(0deg);
+        }
+      }
+
+      /* Botones y mensajes */
+      .message {
+        font-size: 22px;
+        font-weight: bold;
+        color: #444;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+      .btn-container {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+      .btn {
+        padding: 12px 25px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        background: orange;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s;
+      }
+      .btn:hover {
+        transform: scale(1.1);
+      }
+      .hidden-message {
+        margin-top: 20px;
+        font-size: 20px;
+        color: #d32f2f;
+        font-weight: bold;
+        text-align: center;
+        white-space: pre-wrap;
+        border-right: 2px solid #d32f2f;
+        width: fit-content;
+        overflow: hidden;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bouquet-container">
+      <div class="stem stem1"></div>
+      <div class="stem stem2"></div>
+      <div class="stem stem3"></div>
+      <div class="stem stem4"></div>
+      <div class="flower f1">
+        <div class="petal petal1"></div>
+        <div class="petal petal2"></div>
+        <div class="petal petal3"></div>
+        <div class="petal petal4"></div>
+        <div class="petal petal5"></div>
+        <div class="petal petal6"></div>
+        <div class="petal petal7"></div>
+        <div class="petal petal8"></div>
+        <div class="center"></div>
+      </div>
+      <div class="flower f2">
+        <div class="petal petal1"></div>
+        <div class="petal petal2"></div>
+        <div class="petal petal3"></div>
+        <div class="petal petal4"></div>
+        <div class="petal petal5"></div>
+        <div class="petal petal6"></div>
+        <div class="petal petal7"></div>
+        <div class="petal petal8"></div>
+        <div class="center"></div>
+      </div>
+      <div class="flower f3">
+        <div class="petal petal1"></div>
+        <div class="petal petal2"></div>
+        <div class="petal petal3"></div>
+        <div class="petal petal4"></div>
+        <div class="petal petal5"></div>
+        <div class="petal petal6"></div>
+        <div class="petal petal7"></div>
+        <div class="petal petal8"></div>
+        <div class="center"></div>
+      </div>
+      <div class="flower f4">
+        <div class="petal petal1"></div>
+        <div class="petal petal2"></div>
+        <div class="petal petal3"></div>
+        <div class="petal petal4"></div>
+        <div class="petal petal5"></div>
+        <div class="petal petal6"></div>
+        <div class="petal petal7"></div>
+        <div class="petal petal8"></div>
+        <div class="center"></div>
+      </div>
+      <div class="flower f5">
+        <div class="petal petal1"></div>
+        <div class="petal petal2"></div>
+        <div class="petal petal3"></div>
+        <div class="petal petal4"></div>
+        <div class="petal petal5"></div>
+        <div class="petal petal6"></div>
+        <div class="petal petal7"></div>
+        <div class="petal petal8"></div>
+        <div class="center"></div>
+      </div>
+      <div class="flower f6">
+        <div class="petal petal1"></div>
+        <div class="petal petal2"></div>
+        <div class="petal petal3"></div>
+        <div class="petal petal4"></div>
+        <div class="petal petal5"></div>
+        <div class="petal petal6"></div>
+        <div class="petal petal7"></div>
+        <div class="petal petal8"></div>
+        <div class="center"></div>
+      </div>
+      <div class="flower f7">
+        <div class="petal petal1"></div>
+        <div class="petal petal2"></div>
+        <div class="petal petal3"></div>
+        <div class="petal petal4"></div>
+        <div class="petal petal5"></div>
+        <div class="petal petal6"></div>
+        <div class="petal petal7"></div>
+        <div class="petal petal8"></div>
+        <div class="center"></div>
+      </div>
+      <div class="ribbon"></div>
+    </div>
+
+    <p class="message">Tengo algo especial para ti preciosa 💛</p>
+    <div class="btn-container">
+      <button class="btn" onclick="showMessage()">Toca aquí</button>
+      <button class="btn" onclick="openSong()">Reproducir canción</button>
+    </div>
+    <p id="hiddenMessage" class="hidden-message"></p>
+
+    <script>
+      function showMessage() {
+        const text =
+          "💛 Te amo demasiado, siempre estaré contigo mi guerita 💛";
+        const hiddenMessage = document.getElementById("hiddenMessage");
+        hiddenMessage.innerHTML = "";
+        hiddenMessage.style.opacity = 1;
+        let i = 0;
+        function typeWriter() {
+          if (i < text.length) {
+            hiddenMessage.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 80);
+          }
+        }
+        typeWriter();
+      }
+
+      function openSong() {
+        window.open(
+          "https://youtu.be/7O6bHSXfxmU?si=hvM2U4QwggJ1kJ52",
+          "_blank"
+        );
+      }
+    </script>
+  </body>
+</html>
